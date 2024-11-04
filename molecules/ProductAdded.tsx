@@ -12,9 +12,10 @@ export default function ProductAdded({ product }: ProductAddedProps) {
   const { deleteProduct } = useProductContext();
 
   return (
-    <div className='border-2 border-borderColor'>
+    <div className='border-2 border-borderColor flex flex-col'>
+      <span>{product.id}</span>
       <span>{product.name}</span>
-      <span>Añadido</span>
+      <span>{product.price}€</span>
       <DeleteButton text='Quitar producto' onClick={() => deleteProduct(product)}/>
     </div>
   )

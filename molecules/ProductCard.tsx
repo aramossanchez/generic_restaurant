@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     const { addProduct } = useProductContext();
 
   return (
-    <div className='border-2 border-borderColor w-full p-10'>
+    <div className='border-2 border-borderColor w-full p-10 flex flex-col'>
         <p>{product.name}</p>
         <AddButton text='Añadir' onClick={() => addProduct(product)} />
     </div>
