@@ -1,5 +1,5 @@
 const colors = {
-    borderColor: "#0000ff",
+    borderColor: "#c1c1c1",
 };
 
 export default colors;

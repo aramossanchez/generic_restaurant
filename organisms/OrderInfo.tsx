@@ -7,7 +7,8 @@ export default function OrderInfo() {
     const { totalPrice } = useProductContext();
 
   return (
-    <section>
+    <section className='main-component'>
+      <span>Precio total:</span>
       <span>{totalPrice}€</span>
     </section>
   )

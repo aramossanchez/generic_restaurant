@@ -12,6 +12,7 @@ type ProductContextType = {
   deleteProduct: (product: Product) => void;
   deleteAllProduct: () => void;
   totalPrice: number;
+  sendInfo: () => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -45,12 +46,16 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     setTotalPrice(price);
   }, [addedProducts]);
 
+  const sendInfo = () => {
+    console.log(addedProducts);
+  }
+
   useEffect(() => {
     getTotalPrice();
   }, [addedProducts, getTotalPrice]);
 
   return (
-    <ProductContext.Provider value={{ availableProducts, setAvailableProducts, addedProducts, addProduct, deleteProduct, deleteAllProduct, totalPrice }}>
+    <ProductContext.Provider value={{ availableProducts, setAvailableProducts, addedProducts, addProduct, deleteProduct, deleteAllProduct, totalPrice, sendInfo }}>
       {children}
     </ProductContext.Provider>
   );

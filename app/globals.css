@@ -19,3 +19,59 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+/* LARGE SCREEN */
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 3rem 0 3rem 0;
+  grid-gap: 4rem 0;
+}
+.main-component {
+  grid-column: 3 / span 8;
+}
+
+/* LAPTOP SCREEN */
+@media (max-width: 1440px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .main-component {
+    grid-column: 2 / span 8;
+  }
+}
+
+/* TABLET SCREEN */
+@media (max-width: 983px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding: 0 1.5rem 0 1.5rem;
+  }
+  .main-component {
+    grid-column: 1 / span 8;
+  }
+}
+
+/* MOBILE SCREEN */
+@media (max-width: 600px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0 1.5rem 0 1.5rem;
+  }
+  .main-component {
+    grid-column: 1 / span 6;
+  }
+}

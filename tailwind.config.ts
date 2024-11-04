@@ -18,6 +18,11 @@ const config: Config = {
         foreground: "var(--foreground)",
         ...colors
       },
+      screens: {
+        'md': '600px',
+        'lg': '983px',
+        'xl': '1440px',
+      },
     },
   },
   plugins: [],
