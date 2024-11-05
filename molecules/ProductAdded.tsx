@@ -14,16 +14,19 @@ export default function ProductAdded({ product }: ProductAddedProps) {
 
   return (
     <div className='border-2 border-borderColor flex flex-col'>
-      <span>{product.id}</span>
-      <span>{product.name}</span>
-      <Image
-        width={100}
-        height={100}
-        src={product.image}
-        alt="Imagen del producto"
-      />
-      <span>{product.price}€</span>
-      <DeleteButton text='Quitar producto' onClick={() => deleteProduct(product)}/>
+      <DeleteButton text='Quitar producto' onClick={() => deleteProduct(product)} />
+      <div className='w-full flex justify-between items-center'>
+        <div className='flex items-center'>
+          <Image
+            width={50}
+            height={50}
+            src={product.image}
+            alt="Imagen del producto"
+          />
+          <span>{product.name}</span>
+        </div>
+        <span>{product.price}€</span>
+      </div>
     </div>
   )
 }

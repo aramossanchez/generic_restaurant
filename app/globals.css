@@ -19,7 +19,7 @@ body {
 }
 
 .options-select::-webkit-scrollbar {
-  width: 0.4em;
+  width: 1px;
 }
  
 .options-select::-webkit-scrollbar-track {
@@ -40,6 +40,11 @@ h1 {
 h2 {
   font-size: 25px;
   font-weight: 500;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 400;
 }
 
 /* LARGE SCREEN */

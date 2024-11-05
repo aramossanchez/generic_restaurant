@@ -2,10 +2,10 @@
 "use client"
 import { PRODUCTS } from '@/data/Products';
 import { Product } from '@/types/types';
-import { createContext, useContext, useState, ReactNode, useEffect, useCallback, useMemo } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect, useCallback } from 'react';
 
 type ProductContextType = {
-  filteredProducts : Product[];
+  availableProducts : Product[];
   setAvailableProducts: (availableProducts: Product[]) => void;
   addedProducts: Product[];
   addProduct: (product: Product) => void;
@@ -13,8 +13,8 @@ type ProductContextType = {
   deleteAllProduct: () => void;
   totalPrice: number;
   sendInfo: () => void;
-  FILTER_OPTIONS: string[];
-  setfilterSelected: (filterSelected: string) => void;
+  tabSelected: string;
+  setTabSelected: (filterSelected: string) => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -24,17 +24,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const [availableProducts, setAvailableProducts] = useState<Product[]>(PRODUCTS);
   const [addedProducts, setAddedProducts] = useState<Product[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const FILTER_OPTIONS = [
-    "Tipo 1",
-    "Tipo 2",
-    "Tipo 3",
-    "Tipo 4",
-    "Tipo 5",
-    "Tipo 6",
-    "Tipo 7",
-    "Tipo 8",
-  ]
-  const [filterSelected, setfilterSelected] = useState<string>("");
+  const [tabSelected, setTabSelected] = useState<string>("");
 
   const addProduct = (product: Product) => {
     const newProduct = { ...product, id: addedProducts.length + "-added-product" };
@@ -59,13 +49,6 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     setTotalPrice(price);
   }, [addedProducts]);
 
-  const filteredProducts = useMemo(() => {
-    if (filterSelected) {
-      return availableProducts.filter((product) => product.type === filterSelected);
-    }
-    return availableProducts;
-  }, [availableProducts, filterSelected]);
-
   const sendInfo = () => {
     console.log(addedProducts);
   }
@@ -76,7 +59,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ProductContext.Provider value={{
-      filteredProducts ,
+      availableProducts,
       setAvailableProducts,
       addedProducts,
       addProduct,
@@ -84,8 +67,8 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
       deleteAllProduct,
       totalPrice,
       sendInfo,
-      FILTER_OPTIONS,
-      setfilterSelected
+      tabSelected,
+      setTabSelected
     }}>
       {children}
     </ProductContext.Provider>

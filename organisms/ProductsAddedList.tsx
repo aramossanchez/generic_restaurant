@@ -15,7 +15,7 @@ export default function ProductsAddedList() {
       {addedProducts && addedProducts.length > 0 ?
         <>
           <DeleteButton text='Quitar todos los productos añadidos' onClick={() => deleteAllProduct()} />
-          <div className='grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5'>
+          <div className='flex flex-col'>
             {addedProducts.map((product: Product, index: number) => {
               return (
                 <ProductAdded key={`${product.id}-${index}`} product={product} />
